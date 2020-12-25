@@ -7,12 +7,12 @@ import (
 
 var Router *gin.Engine
 
-func route() {
+func init() {
 	router := gin.Default()
 
 	contentController := controller.NewContentController(NewSqlHandler())
 
-	router.GET("/:id/", func(c *gin.Context) { contentController.Show(c) })
+	router.GET("/:id", func(c *gin.Context) { contentController.Show(c) })
 
 	Router = router
 }
